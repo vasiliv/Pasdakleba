@@ -9,11 +9,11 @@ namespace Pasdakleba.Domain.Entities
     public class Brand
     {
         public int Id { get; set; }
+        public int Priority { get; set; }
         public required string NameGeo { get; set; }
         public required string NameEng { get; set; }
 
-        //Navigation properties
-        public int SaleId { get; set; }
-        public Sale Sale { get; set; }
+        //Navigation properties        
+        public ICollection<Sale> Sales { get; set; } = new List<Sale>();
     }
 }

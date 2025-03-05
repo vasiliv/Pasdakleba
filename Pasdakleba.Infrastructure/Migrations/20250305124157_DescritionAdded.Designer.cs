@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pasdakleba.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Pasdakleba.Infrastructure.Data;
 namespace Pasdakleba.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250305124157_DescritionAdded")]
+    partial class DescritionAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,32 +44,14 @@ namespace Pasdakleba.Infrastructure.Migrations
                     b.Property<int>("Priority")
                         .HasColumnType("int");
 
+                    b.Property<int>("SaleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.HasIndex("SaleId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            NameEng = "Nikora",
-                            NameGeo = "ნიკორა",
-                            Priority = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            NameEng = "2Nabiji",
-                            NameGeo = "2 ნაბიჯი",
-                            Priority = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            NameEng = "Spar",
-                            NameGeo = "სპარი",
-                            Priority = 0
-                        });
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("Pasdakleba.Domain.Entities.Sale", b =>
@@ -76,9 +61,6 @@ namespace Pasdakleba.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -99,25 +81,23 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId");
-
                     b.ToTable("Sales");
-                });
-
-            modelBuilder.Entity("Pasdakleba.Domain.Entities.Sale", b =>
-                {
-                    b.HasOne("Pasdakleba.Domain.Entities.Brand", "Brand")
-                        .WithMany("Sales")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
                 });
 
             modelBuilder.Entity("Pasdakleba.Domain.Entities.Brand", b =>
                 {
-                    b.Navigation("Sales");
+                    b.HasOne("Pasdakleba.Domain.Entities.Sale", "Sale")
+                        .WithMany("Brands")
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("Pasdakleba.Domain.Entities.Sale", b =>
+                {
+                    b.Navigation("Brands");
                 });
 #pragma warning restore 612, 618
         }

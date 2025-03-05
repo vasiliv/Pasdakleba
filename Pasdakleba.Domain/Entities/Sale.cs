@@ -11,10 +11,12 @@ namespace Pasdakleba.Domain.Entities
         public int Id { get; set; }
         public int Priority { get; set; }
         public string ImageUrl { get; set; }
+        public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
         //Navigation properties
-        public ICollection<Brand> Brands { get; set; } = new List<Brand>();
+        public int BrandId { get; set; }
+        public Brand Brand { get; set; }
     }
 }
