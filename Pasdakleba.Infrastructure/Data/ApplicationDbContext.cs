@@ -25,6 +25,13 @@ namespace Pasdakleba.Infrastructure.Data
                 new Brand {Id = 2, NameEng = "2Nabiji", NameGeo = "2 ნაბიჯი" },
                 new Brand {Id = 3, NameEng = "Spar", NameGeo = "სპარი" }
                 );
+
+            modelBuilder.Entity<Sale>().HasData(
+                new Sale {Id = 1, BrandId = 1,  Priority = 1, ImageUrl = "www.pasdakleba.ge/1.jpg",
+                            Description = "\U0001f965 ქოქოსი 1ც. - 2.29₾ ნაცვლად 3.50₾-ისა\r\n\U0001f951 ავოკადო 1ც. - 2.69₾ ნაცვლად 3.95₾-ისა\r\n\U0001f96d მანგო 1ც. - 2.99₾ ნაცვლად 4.75₾-ისა\r\n🍊 პომელო 1ც. - 5.49₾ ნაცვლად 8.50₾-ისა",
+                            StartDate = new DateTime(2024, 3, 1), EndDate = new DateTime(2024, 12, 31)
+                        }
+                );
         }
     }
 }
