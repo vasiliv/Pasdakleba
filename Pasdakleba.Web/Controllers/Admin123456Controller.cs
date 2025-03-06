@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pasdakleba.Domain.Entities;
 using Pasdakleba.Infrastructure.Data;
 
 namespace Pasdakleba.Web.Controllers
@@ -19,5 +20,13 @@ namespace Pasdakleba.Web.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Create(Sale obj)
+        {
+            _db.Sales.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
+    
