@@ -4,28 +4,42 @@
     ViewData["Title"] = "ადმინისტრატორის პანელი";
 }
 
-<h1>ადმინისტრატორის პანელი</h1>
+<div class="w-100 card border-0 p-4">
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Priority</th>
-            <th>Image Url</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var obj in Model)
-        {
-            <tr>
-                <td>@obj.Id</td>
-                <td>@obj.Priority</td>
-                <td>@obj.ImageUrl</td>
-                <td>@obj.StartDate</td>
-                <td>@obj.EndDate</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <h1>ადმინისტრატორის პანელი</h1>
+
+    <div class="card-body border p-4">
+        <div class="row pb-3">
+            <div class="col-6 offset-6 text-end">
+                <a asp-controller="Admin123456" asp-action="" class="btn btn-secondary">
+                    Create New Sale
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body border p-4">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Priority</th>
+                    <th>Image Url</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Id</td>
+                        <td>@obj.Priority</td>
+                        <td>@obj.ImageUrl</td>
+                        <td>@obj.StartDate</td>
+                        <td>@obj.EndDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
