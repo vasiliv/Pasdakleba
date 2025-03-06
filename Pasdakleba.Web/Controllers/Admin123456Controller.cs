@@ -15,5 +15,9 @@ namespace Pasdakleba.Web.Controllers
             var Sales = _db.Sales.ToList();
             return View(Sales);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
