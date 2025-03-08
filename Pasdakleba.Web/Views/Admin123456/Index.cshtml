@@ -22,11 +22,13 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Brand Id</th>
+                    <th>Sale Type Id</th>
                     <th>Priority</th>
                     <th>Image Url</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th></th>
+                    @* <th></th> *@
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +36,8 @@
                 {
                     <tr>
                         <td>@obj.Id</td>
+                        <td>@obj.BrandId</td>
+                        <td>@obj.SaleTypeId</td>
                         <td>@obj.Priority</td>
                         <td>@obj.ImageUrl</td>
                         <td>@obj.StartDate</td>

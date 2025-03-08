@@ -12,8 +12,8 @@ using Pasdakleba.Infrastructure.Data;
 namespace Pasdakleba.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250306164304_SeedSale")]
-    partial class SeedSale
+    [Migration("20250308152224_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,12 +97,17 @@ namespace Pasdakleba.Infrastructure.Migrations
                     b.Property<int>("Priority")
                         .HasColumnType("int");
 
+                    b.Property<int>("SaleTypeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
+
+                    b.HasIndex("SaleTypeId");
 
                     b.ToTable("Sales");
 
@@ -115,7 +120,55 @@ namespace Pasdakleba.Infrastructure.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "www.pasdakleba.ge/1.jpg",
                             Priority = 1,
+                            SaleTypeId = 1,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("Pasdakleba.Domain.Entities.SaleType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NameEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameGeo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SaleType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NameEng = "Food",
+                            NameGeo = "საკვები პროდუქტები"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NameEng = "Drinks",
+                            NameGeo = "სასმელი"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NameEng = "Technique",
+                            NameGeo = "ტექნიკა"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameEng = "Various",
+                            NameGeo = "სხვადასხვა"
                         });
                 });
 
@@ -127,10 +180,23 @@ namespace Pasdakleba.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Pasdakleba.Domain.Entities.SaleType", "SaleType")
+                        .WithMany("Sales")
+                        .HasForeignKey("SaleTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Brand");
+
+                    b.Navigation("SaleType");
                 });
 
             modelBuilder.Entity("Pasdakleba.Domain.Entities.Brand", b =>
+                {
+                    b.Navigation("Sales");
+                });
+
+            modelBuilder.Entity("Pasdakleba.Domain.Entities.SaleType", b =>
                 {
                     b.Navigation("Sales");
                 });

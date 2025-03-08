@@ -21,5 +21,8 @@ namespace Pasdakleba.Domain.Entities
         //Navigation properties
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+
+        public int SaleTypeId { get; set; }
+        public SaleType SaleType { get; set; }
     }
 }
