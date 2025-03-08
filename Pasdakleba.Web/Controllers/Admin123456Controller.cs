@@ -23,12 +23,13 @@ namespace Pasdakleba.Web.Controllers
         [HttpPost]
         public IActionResult Create(Sale obj)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Sales.Add(obj);
+            //Because of public Brand Brand { get; set; } and public SaleType SaleType { get; set; }
+            //if (ModelState.IsValid)
+            //{
+            _db.Sales.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            //}
             return View(obj);
         }
         public IActionResult Update(int SaleId)

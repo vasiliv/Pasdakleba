@@ -13,15 +13,20 @@
         <form method="post" class="row">
             <div class="p-3">
                 <div class="form-floating py-1 col-12">
-                    <input asp-for="Priority" class="form-control border shadow" />
-                    <label asp-for="Priority" class="ms-2"></label>
-                    <span asp-validation-for="Priority" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
                     <input asp-for="BrandId" class="form-control border shadow" />
                     <label asp-for="BrandId" class="ms-2"></label>
                     <span asp-validation-for="BrandId" class="text-danger"></span>
                 </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="SaleTypeId" class="form-control border shadow" />
+                    <label asp-for="SaleTypeId" class="ms-2"></label>
+                    <span asp-validation-for="SaleTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Priority" class="form-control border shadow" />
+                    <label asp-for="Priority" class="ms-2"></label>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>                
                 <div class="form-floating py-1 col-12">
                     <input asp-for="ImageUrl" class="form-control border shadow" />
                     <label asp-for="ImageUrl" class="ms-2"></label>
