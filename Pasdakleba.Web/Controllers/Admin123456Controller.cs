@@ -31,8 +31,28 @@ namespace Pasdakleba.Web.Controllers
             }
             return View(obj);
         }
+        public IActionResult Update(int SaleId)
+        {
+            Sale? obj = _db.Sales.FirstOrDefault(u => u.Id == SaleId);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        public IActionResult Update(Sale obj)
+        {
+            //Because Brand is invalid
+            //if (ModelState.IsValid && obj.Id > 0)
+            //{
+                _db.Sales.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            //}
+            //return View(obj);
+        }
     }
 }
 
 
-    
