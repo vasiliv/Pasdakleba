@@ -13,7 +13,9 @@ namespace Pasdakleba.Domain.Entities
         public int Priority { get; set; }        
         public string ImageUrl { get; set; }
         public string Description { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
 
         //Navigation properties
