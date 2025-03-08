@@ -46,11 +46,32 @@ namespace Pasdakleba.Web.Controllers
             //Because Brand is invalid
             //if (ModelState.IsValid && obj.Id > 0)
             //{
-                _db.Sales.Update(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+            _db.Sales.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
             //}
             //return View(obj);
+        }
+        public IActionResult Delete(int SaleId)
+        {
+            Sale? obj = _db.Sales.FirstOrDefault(u => u.Id == SaleId);
+            if (obj is null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        public IActionResult Delete(Sale obj)
+        {
+            Sale? objFromDb = _db.Sales.FirstOrDefault(u => u.Id == obj.Id);
+            if (objFromDb is not null)
+            {
+                _db.Sales.Remove(objFromDb);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }
