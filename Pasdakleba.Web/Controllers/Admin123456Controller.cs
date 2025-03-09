@@ -22,15 +22,14 @@ namespace Pasdakleba.Web.Controllers
         }
         [HttpPost]
         public IActionResult Create(Sale obj)
-        {
-            //Because of public Brand Brand { get; set; } and public SaleType SaleType { get; set; }
-            //if (ModelState.IsValid)
-            //{
-            _db.Sales.Add(obj);
+        {            
+            if (ModelState.IsValid)
+            {
+                _db.Sales.Add(obj);
             _db.SaveChanges();
             TempData["success"] = "The sale has been created successfully.";
             return RedirectToAction("Index");
-            //}
+            }
             return View(obj);
         }
         public IActionResult Update(int SaleId)
@@ -44,16 +43,15 @@ namespace Pasdakleba.Web.Controllers
         }
         [HttpPost]
         public IActionResult Update(Sale obj)
-        {
-            //Because Brand is invalid
-            //if (ModelState.IsValid && obj.Id > 0)
-            //{
-            _db.Sales.Update(obj);
+        {            
+            if (ModelState.IsValid && obj.Id > 0)
+            {
+                _db.Sales.Update(obj);
             _db.SaveChanges();
             TempData["success"] = "The sale has been updated successfully.";
             return RedirectToAction("Index");
-            //}
-            //return View(obj);
+            }
+            return View(obj);
         }
         public IActionResult Delete(int SaleId)
         {

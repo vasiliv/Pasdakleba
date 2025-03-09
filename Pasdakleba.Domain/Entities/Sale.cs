@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Pasdakleba.Domain.Entities
 {
@@ -20,9 +21,13 @@ namespace Pasdakleba.Domain.Entities
 
         //Navigation properties
         public int BrandId { get; set; }
+        //Modelstate.IsValid will not work without it
+        [ValidateNever]
         public Brand Brand { get; set; }
 
         public int SaleTypeId { get; set; }
+        //Modelstate.IsValid will not work without it
+        [ValidateNever]
         public SaleType SaleType { get; set; }
     }
 }
