@@ -10,7 +10,7 @@ namespace Pasdakleba.Domain.Entities
     public class Brand
     {
         public int Id { get; set; }
-        public int Priority { get; set; }
+        public int? Priority { get; set; }
         [Required]
         public required string NameGeo { get; set; }
         [Required]
