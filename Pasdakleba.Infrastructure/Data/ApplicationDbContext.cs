@@ -29,7 +29,8 @@ namespace Pasdakleba.Infrastructure.Data
                 new SaleType { Id = 1, NameEng = "Food", NameGeo = "საკვები პროდუქტები" },
                 new SaleType { Id = 2, NameEng = "Drinks", NameGeo = "სასმელი" },
                 new SaleType { Id = 3, NameEng = "Technique", NameGeo = "ტექნიკა" },
-                new SaleType { Id = 4, NameEng = "Various", NameGeo = "სხვადასხვა" }
+                new SaleType { Id = 4, NameEng = "Shoes And Clothing", NameGeo = "ტანსაცმელი და ფეხსაცმელი" },
+                new SaleType { Id = 5, NameEng = "Various", NameGeo = "სხვადასხვა" }
                 );            
             modelBuilder.Entity<Sale>().HasData(
                 new Sale {Id = 1, BrandId = 1, SaleTypeId = 1,
