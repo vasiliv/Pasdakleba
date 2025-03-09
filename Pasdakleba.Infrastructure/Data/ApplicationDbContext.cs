@@ -16,7 +16,7 @@ namespace Pasdakleba.Infrastructure.Data
         }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Sale> Sales { get; set; }
-
+        public DbSet<SaleType> SaleTypes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
