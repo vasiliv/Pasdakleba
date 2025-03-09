@@ -27,8 +27,9 @@ namespace Pasdakleba.Web.Controllers
             //if (ModelState.IsValid)
             //{
             _db.Sales.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+            _db.SaveChanges();
+            TempData["success"] = "The sale has been created successfully.";
+            return RedirectToAction("Index");
             //}
             return View(obj);
         }
@@ -49,6 +50,7 @@ namespace Pasdakleba.Web.Controllers
             //{
             _db.Sales.Update(obj);
             _db.SaveChanges();
+            TempData["success"] = "The sale has been updated successfully.";
             return RedirectToAction("Index");
             //}
             //return View(obj);
@@ -70,6 +72,7 @@ namespace Pasdakleba.Web.Controllers
             {
                 _db.Sales.Remove(objFromDb);
                 _db.SaveChanges();
+                TempData["success"] = "The sale has been deleted successfully.";
                 return RedirectToAction("Index");
             }
             return View();
