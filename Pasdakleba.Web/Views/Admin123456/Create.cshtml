@@ -13,12 +13,18 @@
         <form method="post" class="row">
             <div class="p-3">
                 <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.BrandId" class="form-control border shadow" />
+                    @* <input asp-for="Sale.BrandId" class="form-control border shadow" /> *@
+                    <select asp-for="@Model.Sale.BrandId" asp-items="@Model.BrandList" class="form-select border shadow">                        
+                        <option disabled selected>--Select Brand--</option>
+                    </select>
                     <label asp-for="Sale.BrandId" class="ms-2"></label>
                     <span asp-validation-for="Sale.BrandId" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.SaleTypeId" class="form-control border shadow" />
+                    @* <input asp-for="Sale.SaleTypeId" class="form-control border shadow" /> *@
+                    <select asp-for="@Model.Sale.SaleTypeId" asp-items="@Model.SaleTypeList" class="form-select border shadow">
+                        <option disabled selected>--Select Sale Type--</option>
+                    </select>
                     <label asp-for="Sale.SaleTypeId" class="ms-2"></label>
                     <span asp-validation-for="Sale.SaleTypeId" class="text-danger"></span>
                 </div>

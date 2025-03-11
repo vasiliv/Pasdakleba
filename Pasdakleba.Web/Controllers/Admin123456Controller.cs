@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Pasdakleba.Domain.Entities;
 using Pasdakleba.Infrastructure.Data;
+using Pasdakleba.Web.ViewModels;
 
 namespace Pasdakleba.Web.Controllers
 {
@@ -18,14 +20,27 @@ namespace Pasdakleba.Web.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            SaleVM saleVm = new()
+            {
+                BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.NameGeo,
+                    Value = u.Id.ToString()
+                }),
+                SaleTypeList = _db.SaleTypes.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.NameGeo,
+                    Value = u.Id.ToString()
+                })
+            };
+            return View(saleVm);
         }
         [HttpPost]
-        public IActionResult Create(Sale obj)
-        {            
+        public IActionResult Create(SaleVM obj)
+        {
             if (ModelState.IsValid)
             {
-                _db.Sales.Add(obj);
+                _db.Sales.Add(obj.Sale);
             _db.SaveChanges();
             TempData["success"] = "The sale has been created successfully.";
             return RedirectToAction("Index");
