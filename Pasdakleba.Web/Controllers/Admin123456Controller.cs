@@ -45,32 +45,55 @@ namespace Pasdakleba.Web.Controllers
             if (ModelState.IsValid)
             {
                 _db.Sales.Add(obj.Sale);
-            _db.SaveChanges();
-            TempData["success"] = "The sale has been created successfully.";
-            return RedirectToAction("Index");
+                _db.SaveChanges();
+                TempData["success"] = "The sale has been created successfully.";
+                return RedirectToAction("Index");
             }
             return View(obj);
         }
         public IActionResult Update(int SaleId)
         {
-            Sale? obj = _db.Sales.FirstOrDefault(u => u.Id == SaleId);
-            if (obj == null)
+            SaleVM saleVm = new()
+            {
+                BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.NameGeo,
+                    Value = u.Id.ToString()
+                }),
+                SaleTypeList = _db.SaleTypes.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.NameGeo,
+                    Value = u.Id.ToString()
+                }),
+                Sale = _db.Sales.FirstOrDefault(u => u.Id == SaleId)
+            };
+            if (saleVm == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(saleVm);
         }
         [HttpPost]
-        public IActionResult Update(Sale obj)
-        {            
-            if (ModelState.IsValid && obj.Id > 0)
+        public IActionResult Update(SaleVM saleVM)
+        {
+            if (ModelState.IsValid)
             {
-                _db.Sales.Update(obj);
-            _db.SaveChanges();
-            TempData["success"] = "The sale has been updated successfully.";
-            return RedirectToAction("Index");
+                _db.Sales.Update(saleVM.Sale);
+                _db.SaveChanges();
+                TempData["success"] = "The sale has been updated successfully.";
+                return RedirectToAction("Index");
             }
-            return View(obj);
+            saleVM.BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+            {
+                Text = u.NameGeo,
+                Value = u.Id.ToString()
+            });
+            saleVM.SaleTypeList = _db.SaleTypes.ToList().Select(u => new SelectListItem
+            {
+                Text = u.NameGeo,
+                Value = u.Id.ToString()
+            });
+            return View(saleVM);
         }
         public IActionResult Delete(int SaleId)
         {
