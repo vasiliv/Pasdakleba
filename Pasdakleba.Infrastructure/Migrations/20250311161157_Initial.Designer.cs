@@ -12,8 +12,8 @@ using Pasdakleba.Infrastructure.Data;
 namespace Pasdakleba.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250309182153_SaleTypeTableAdded")]
-    partial class SaleTypeTableAdded
+    [Migration("20250311161157_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,6 +66,12 @@ namespace Pasdakleba.Infrastructure.Migrations
                             Id = 3,
                             NameEng = "Spar",
                             NameGeo = "სპარი"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameEng = "Other",
+                            NameGeo = "სხვა"
                         });
                 });
 
@@ -91,7 +97,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Priority")
+                    b.Property<int?>("Priority")
                         .HasColumnType("int");
 
                     b.Property<int>("SaleTypeId")
@@ -164,6 +170,12 @@ namespace Pasdakleba.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
+                            NameEng = "Shoes And Clothing",
+                            NameGeo = "ტანსაცმელი და ფეხსაცმელი"
+                        },
+                        new
+                        {
+                            Id = 5,
                             NameEng = "Various",
                             NameGeo = "სხვადასხვა"
                         });

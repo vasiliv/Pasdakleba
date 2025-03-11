@@ -19,7 +19,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Priority = table.Column<int>(type: "int", nullable: false),
+                    Priority = table.Column<int>(type: "int", nullable: true),
                     NameGeo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NameEng = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -29,7 +29,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SaleType",
+                name: "SaleTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -39,7 +39,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SaleType", x => x.Id);
+                    table.PrimaryKey("PK_SaleTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +48,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Priority = table.Column<int>(type: "int", nullable: false),
+                    Priority = table.Column<int>(type: "int", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -66,9 +66,9 @@ namespace Pasdakleba.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Sales_SaleType_SaleTypeId",
+                        name: "FK_Sales_SaleTypes_SaleTypeId",
                         column: x => x.SaleTypeId,
-                        principalTable: "SaleType",
+                        principalTable: "SaleTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -78,20 +78,22 @@ namespace Pasdakleba.Infrastructure.Migrations
                 columns: new[] { "Id", "NameEng", "NameGeo", "Priority" },
                 values: new object[,]
                 {
-                    { 1, "Nikora", "ნიკორა", 0 },
-                    { 2, "2Nabiji", "2 ნაბიჯი", 0 },
-                    { 3, "Spar", "სპარი", 0 }
+                    { 1, "Nikora", "ნიკორა", null },
+                    { 2, "2Nabiji", "2 ნაბიჯი", null },
+                    { 3, "Spar", "სპარი", null },
+                    { 4, "Other", "სხვა", null }
                 });
 
             migrationBuilder.InsertData(
-                table: "SaleType",
+                table: "SaleTypes",
                 columns: new[] { "Id", "NameEng", "NameGeo" },
                 values: new object[,]
                 {
                     { 1, "Food", "საკვები პროდუქტები" },
                     { 2, "Drinks", "სასმელი" },
                     { 3, "Technique", "ტექნიკა" },
-                    { 4, "Various", "სხვადასხვა" }
+                    { 4, "Shoes And Clothing", "ტანსაცმელი და ფეხსაცმელი" },
+                    { 5, "Various", "სხვადასხვა" }
                 });
 
             migrationBuilder.InsertData(
@@ -120,7 +122,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                 name: "Brands");
 
             migrationBuilder.DropTable(
-                name: "SaleType");
+                name: "SaleTypes");
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Pasdakleba.Domain.Entities
     public class Sale
     {
         public int Id { get; set; }
-        public int Priority { get; set; }        
+        public int? Priority { get; set; }        
         public string ImageUrl { get; set; }
         public string Description { get; set; }
         [Required]

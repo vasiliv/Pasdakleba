@@ -63,6 +63,12 @@ namespace Pasdakleba.Infrastructure.Migrations
                             Id = 3,
                             NameEng = "Spar",
                             NameGeo = "სპარი"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameEng = "Other",
+                            NameGeo = "სხვა"
                         });
                 });
 
@@ -88,7 +94,7 @@ namespace Pasdakleba.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Priority")
+                    b.Property<int?>("Priority")
                         .HasColumnType("int");
 
                     b.Property<int>("SaleTypeId")
