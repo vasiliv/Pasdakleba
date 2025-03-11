@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Pasdakleba.Domain.Entities;
 using Pasdakleba.Infrastructure.Data;
 using Pasdakleba.Web.ViewModels;
@@ -15,7 +16,10 @@ namespace Pasdakleba.Web.Controllers
         }
         public IActionResult Index()
         {
-            var Sales = _db.Sales.ToList();
+            var Sales = _db.Sales
+                .Include(u => u.SaleType)
+                .Include(u => u.Brand)
+                .ToList();
             return View(Sales);
         }
         public IActionResult Create()
