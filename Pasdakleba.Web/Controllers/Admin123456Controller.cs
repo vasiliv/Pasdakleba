@@ -10,9 +10,11 @@ namespace Pasdakleba.Web.Controllers
     public class Admin123456Controller : Controller
     {
         private readonly ApplicationDbContext _db;
-        public Admin123456Controller(ApplicationDbContext db)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public Admin123456Controller(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment    )
         {
             _db = db;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -44,6 +46,21 @@ namespace Pasdakleba.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (obj.Sale.Image != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(obj.Sale.Image.FileName);
+                    //images folder in wwwroot
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images\");
+
+                    using var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create);
+                    obj.Sale.Image.CopyTo(fileStream);
+
+                    obj.Sale.ImageUrl = @"\images\" + fileName;
+                }
+                else
+                {
+                    obj.Sale.ImageUrl = "https://placehold.co/600x400";
+                }
                 _db.Sales.Add(obj.Sale);
                 _db.SaveChanges();
                 TempData["success"] = "The sale has been created successfully.";

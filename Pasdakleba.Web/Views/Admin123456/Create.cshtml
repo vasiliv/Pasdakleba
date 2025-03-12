@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body border p-4">
-        <form method="post" class="row">
+        <form method="post" class="row" enctype="multipart/form-data">
             <div class="p-3">
                 <div class="form-floating py-1 col-12">
                     @* <input asp-for="Sale.BrandId" class="form-control border shadow" /> *@
@@ -34,7 +34,8 @@
                     <span asp-validation-for="Sale.Priority" class="text-danger"></span>
                 </div>                
                 <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.ImageUrl" class="form-control border shadow" />
+                    <input asp-for="Sale.ImageUrl" hidden class="form-control border shadow" />
+                    <input asp-for="Sale.Image" class="form-control border shadow" />
                     <label asp-for="Sale.ImageUrl" class="ms-2"></label>
                     <span asp-validation-for="Sale.ImageUrl" class="text-danger"></span>
                 </div>

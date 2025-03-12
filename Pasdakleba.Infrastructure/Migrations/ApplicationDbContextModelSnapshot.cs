@@ -43,7 +43,7 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
 
                     b.HasData(
                         new
@@ -109,7 +109,7 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasIndex("SaleTypeId");
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sales", (string)null);
 
                     b.HasData(
                         new
@@ -143,7 +143,7 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SaleTypes");
+                    b.ToTable("SaleTypes", (string)null);
 
                     b.HasData(
                         new

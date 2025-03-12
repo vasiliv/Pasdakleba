@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Pasdakleba.Domain.Entities
@@ -11,8 +13,10 @@ namespace Pasdakleba.Domain.Entities
     public class Sale
     {
         public int Id { get; set; }
-        public int? Priority { get; set; }        
-        public string ImageUrl { get; set; }
+        public int? Priority { get; set; }
+        [NotMapped]
+        public IFormFile? Image { get; set; }
+        public string? ImageUrl { get; set; }
         public string Description { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
