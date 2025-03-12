@@ -12,60 +12,67 @@
     <div class="card-body border p-4">
         <form method="post" class="row">
             <input asp-for="Sale.Id" hidden />
-            <div class="p-3">
-                <div class="form-floating py-1 col-12">
-                    @* <input asp-for="Sale.BrandId" class="form-control border shadow" /> *@
-                    <select asp-for="@Model.Sale.BrandId" asp-items="@Model.BrandList" class="form-select border shadow">
-                        <option disabled selected>--Select Brand--</option>
-                    </select>
-                    @* <label asp-for="Sale.BrandId" class="ms-2"></label> *@
-                    <span asp-validation-for="Sale.BrandId" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
-                    @* <input asp-for="Sale.SaleTypeId" class="form-control border shadow" /> *@
-                    <select asp-for="@Model.Sale.SaleTypeId" asp-items="@Model.SaleTypeList" class="form-select border shadow">
-                        <option disabled selected>--Select Sale Type--</option>
-                    </select>
-                    @* <label asp-for="Sale.SaleTypeId" class="ms-2"></label> *@
-                    <span asp-validation-for="Sale.SaleTypeId" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.Priority" class="form-control border shadow" />
-                    <label asp-for="Sale.Priority" class="ms-2"></label>
-                    <span asp-validation-for="Sale.Priority" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.ImageUrl" class="form-control border shadow" />
-                    <label asp-for="Sale.ImageUrl" class="ms-2"></label>
-                    <span asp-validation-for="Sale.ImageUrl" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.Description" class="form-control border shadow" />
-                    <label asp-for="Sale.Description" class="ms-2"></label>
-                    <span asp-validation-for="Sale.Description" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.StartDate" type="date" class="form-control border shadow" />
-                    <label asp-for="Sale.StartDate" class="ms-2"></label>
-                    <span asp-validation-for="Sale.StartDate" class="text-danger"></span>
-                </div>
-                <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.EndDate" type="date" class="form-control border shadow" />
-                    <label asp-for="Sale.EndDate" class="ms-2"></label>
-                    <span asp-validation-for="Sale.EndDate" class="text-danger"></span>
-                </div>
-                <div class="row pt-2">
-                    <div class="col-6 col-md-3">
-                        <button type="submit" class="btn btn-success w-100">
-                            შეცვლა
-                        </button>
+            <div class="col-10">
+                <div class="p-3">
+                    <div class="form-floating py-1 col-12">
+                        @* <input asp-for="Sale.BrandId" class="form-control border shadow" /> *@
+                        <select asp-for="@Model.Sale.BrandId" asp-items="@Model.BrandList" class="form-select border shadow">
+                            <option disabled selected>--Select Brand--</option>
+                        </select>
+                        @* <label asp-for="Sale.BrandId" class="ms-2"></label> *@
+                        <span asp-validation-for="Sale.BrandId" class="text-danger"></span>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <a asp-controller="Admin123456" asp-action="Index" class="btn btn-secondary w-100">
-                            გამოსვლა
-                        </a>
+                    <div class="form-floating py-1 col-12">
+                        @* <input asp-for="Sale.SaleTypeId" class="form-control border shadow" /> *@
+                        <select asp-for="@Model.Sale.SaleTypeId" asp-items="@Model.SaleTypeList" class="form-select border shadow">
+                            <option disabled selected>--Select Sale Type--</option>
+                        </select>
+                        @* <label asp-for="Sale.SaleTypeId" class="ms-2"></label> *@
+                        <span asp-validation-for="Sale.SaleTypeId" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-1 col-12">
+                        <input asp-for="Sale.Priority" class="form-control border shadow" />
+                        <label asp-for="Sale.Priority" class="ms-2"></label>
+                        <span asp-validation-for="Sale.Priority" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-1 col-12">
+                        <input asp-for="Sale.Image" class="form-control border shadow" />
+                        <input asp-for="Sale.ImageUrl" hidden class="form-control border shadow" />
+                        <label asp-for="Sale.ImageUrl" class="ms-2"></label>
+                        <span asp-validation-for="Sale.ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-1 col-12">
+                        <input asp-for="Sale.Description" class="form-control border shadow" />
+                        <label asp-for="Sale.Description" class="ms-2"></label>
+                        <span asp-validation-for="Sale.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-1 col-12">
+                        <input asp-for="Sale.StartDate" type="date" class="form-control border shadow" />
+                        <label asp-for="Sale.StartDate" class="ms-2"></label>
+                        <span asp-validation-for="Sale.StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-1 col-12">
+                        <input asp-for="Sale.EndDate" type="date" class="form-control border shadow" />
+                        <label asp-for="Sale.EndDate" class="ms-2"></label>
+                        <span asp-validation-for="Sale.EndDate" class="text-danger"></span>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6 col-md-3">
+                            <button type="submit" class="btn btn-success w-100">
+                                შეცვლა
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a asp-controller="Admin123456" asp-action="Index" class="btn btn-secondary w-100">
+                                გამოსვლა
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-2">
+                <img src="@Model.Sale.ImageUrl" width="100%"
+                     style="border-radius:5px; border:1px solid #bbb9b9" />
             </div>
         </form>
     </div>
