@@ -133,20 +133,42 @@ namespace Pasdakleba.Web.Controllers
             return View(saleVM);
         }
         public IActionResult Delete(int SaleId)
-        {
-            Sale? obj = _db.Sales.FirstOrDefault(u => u.Id == SaleId);
-            if (obj is null)
+        {            
+            SaleVM saleVm = new()
+            {
+                BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.NameGeo,
+                    Value = u.Id.ToString()
+                }),
+                SaleTypeList = _db.SaleTypes.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.NameGeo,
+                    Value = u.Id.ToString()
+                }),
+                Sale = _db.Sales.FirstOrDefault(u => u.Id == SaleId)
+            };
+            if (saleVm == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(saleVm);
         }
         [HttpPost]
-        public IActionResult Delete(Sale obj)
+        public IActionResult Delete(SaleVM saleVM)
         {
-            Sale? objFromDb = _db.Sales.FirstOrDefault(u => u.Id == obj.Id);
+            Sale? objFromDb = _db.Sales.FirstOrDefault(u => u.Id == saleVM.Sale.Id);
             if (objFromDb is not null)
             {
+                if (!string.IsNullOrEmpty(objFromDb.ImageUrl))
+                {
+                    var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, objFromDb.ImageUrl.TrimStart('\\'));
+
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
                 _db.Sales.Remove(objFromDb);
                 _db.SaveChanges();
                 TempData["success"] = "The sale has been deleted successfully.";
