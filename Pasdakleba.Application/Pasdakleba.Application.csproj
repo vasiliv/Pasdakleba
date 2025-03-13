@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pasdakleba.Domain\Pasdakleba.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

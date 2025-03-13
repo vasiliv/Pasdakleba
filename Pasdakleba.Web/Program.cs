@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Pasdakleba.Infrastructure.Data;
+using static Pasdakleba.Web.Controllers.Admin123456Controller;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(option => 
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<INavbarService, NavbarService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
