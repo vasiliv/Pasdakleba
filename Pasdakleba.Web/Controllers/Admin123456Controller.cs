@@ -95,6 +95,26 @@ namespace Pasdakleba.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (saleVM.Sale.Image != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(saleVM.Sale.Image.FileName);
+                    //images folder in wwwroot
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images\");
+
+                    if (!string.IsNullOrEmpty(saleVM.Sale.ImageUrl))
+                    {
+                        var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, saleVM.Sale.ImageUrl.TrimStart('\\'));
+
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+                    using var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create);
+                    saleVM.Sale.Image.CopyTo(fileStream);
+
+                    saleVM.Sale.ImageUrl = @"\images\" + fileName;
+                }                
                 _db.Sales.Update(saleVM.Sale);
                 _db.SaveChanges();
                 TempData["success"] = "The sale has been updated successfully.";
