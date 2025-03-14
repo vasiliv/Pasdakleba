@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pasdakleba.Domain\Pasdakleba.Domain.csproj" />
+    <ProjectReference Include="..\Pasdakleba.Infrastructure\Pasdakleba.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

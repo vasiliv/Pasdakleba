@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pasdakleba.Application\Pasdakleba.Application.csproj" />
     <ProjectReference Include="..\Pasdakleba.Infrastructure\Pasdakleba.Infrastructure.csproj" />
   </ItemGroup>
 

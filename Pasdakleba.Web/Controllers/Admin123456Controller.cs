@@ -175,24 +175,8 @@ namespace Pasdakleba.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-        }
-        public interface INavbarService
-        {
-            Task<List<SaleType>> GetNavbarItemsAsync();
-        }
-        public class NavbarService : INavbarService
-        {
-            private readonly ApplicationDbContext _db;
-
-            public NavbarService(ApplicationDbContext db)
-            {
-                _db = db;
-            }
-            public async Task<List<SaleType>> GetNavbarItemsAsync()
-            {
-                return await _db.SaleTypes.ToListAsync();
-            }
-        }
+        }        
+        
     }
 }
 
