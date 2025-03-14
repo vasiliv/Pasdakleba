@@ -1,5 +1,30 @@
-﻿@model IEnumerable<Brand>
+﻿@model HomeVM
 
 <h1>ყველა ფასდაკლება ერთ სივრცეში</h1>
 
+<div>    
+    <form method="post" style="background-color:cornflowerblue">
+        <div class="row p-0 mx-0 py-4">
+
+            <div class="col-12 col-md-5  offset-md-1 pl-2  pr-2 pr-md-0">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-4 col-md-2 pt-4 pr-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success btn-block">
+                        <i class="bi bi-search"></i>  &nbsp; Check Availability
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
