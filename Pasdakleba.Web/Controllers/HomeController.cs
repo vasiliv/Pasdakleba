@@ -1,7 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pasdakleba.Infrastructure.Data;
 using Pasdakleba.Web.Models;
+using Pasdakleba.Web.ViewModels;
 
 namespace Pasdakleba.Web.Controllers;
 
@@ -14,7 +16,13 @@ public class HomeController : Controller
     }
     public IActionResult Index()
     {
-        var Brands = _db.Brands.ToList();
-        return View(Brands);
+        HomeVM homeVM = new()
+        {
+            SaleList = _db.Sales
+                .Include(u => u.SaleType)
+                .Include(u => u.Brand)
+                .ToList()
+        };
+        return View(homeVM);
     }    
 }

@@ -1,8 +1,10 @@
-﻿namespace Pasdakleba.Web.ViewModels
+﻿using Pasdakleba.Domain.Entities;
+
+namespace Pasdakleba.Web.ViewModels
 {
     public class HomeVM
     {
-        public IEnumerable<SaleVM>? SaleVMs { get; set; }
+        public IEnumerable<Sale>? SaleList { get; set; }
         public DateOnly? SaleStart { get; set; }
         public DateOnly? SaleFinish { get; set; }
     }
