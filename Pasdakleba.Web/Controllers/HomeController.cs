@@ -16,13 +16,10 @@ public class HomeController : Controller
     }
     public IActionResult Index()
     {
-        HomeVM homeVM = new()
-        {
-            SaleList = _db.Sales
+        var Sales = _db.Sales
                 .Include(u => u.SaleType)
                 .Include(u => u.Brand)
-                .ToList()
-        };
-        return View(homeVM);
+                .ToList();
+        return View(Sales);        
     }    
 }

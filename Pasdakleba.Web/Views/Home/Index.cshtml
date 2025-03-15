@@ -1,10 +1,10 @@
-﻿@model HomeVM
+﻿@model IEnumerable<Sale>
 
 <h1>ყველა ფასდაკლება ერთ სივრცეში</h1>
 
 <div>
     <form method="post" style="background-color:cornflowerblue">
-        <div class="row p-0 mx-0 py-4">
+        @* <div class="row p-0 mx-0 py-4">
 
             <div class="col-12 col-md-5  offset-md-1 pl-2  pr-2 pr-md-0">
                 <div class="form-group">
@@ -24,11 +24,11 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> *@
 
         <div id="VillasList">
             <div class="row px-lg-5 m-lg-4 m-sm-0 px-sm-0" style="--bs-gutter-x:0">
-                @foreach (var sale in Model.SaleList)
+                @foreach (var sale in Model)
                 {
                     <div class="p-4 col-md-12 col-lg-6">
                         <div class="row" style="border-radius:5px; border: 1px solid #aaa">
