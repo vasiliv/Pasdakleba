@@ -37,23 +37,18 @@
                             </div>
                             <div class="col-8">
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-title text-warning" style="font-size:xx-large">@sale.Brand.NameGeo</p>
-                                    <div class="pt-2">
-                                        @* <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(11)'>
-                                            ვრცლად
-                                        </button> *@
-                                    </div>
+                                    <p class="card-title text-warning" style="font-size:xx-large">@sale.Brand.NameGeo</p>                                    
                                 </div>
                                 <p class="card-text">
                                     სფერო: @sale.SaleType.NameGeo
                                 </p>
+                                <p class="card-text">
+                                    @sale.Description
+                                </p>
                             </div>
                             <div class="col-12">
                                 <div class="row pb-3 pt-2">
-                                    <div class="col-4">
-                                        @* <a class="btn btn-success form-control btn-block">
-                                            Book
-                                        </a> *@
+                                    <div class="col-4">                                        
                                         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(11)'>
                                             ვრცლად
                                         </button>
