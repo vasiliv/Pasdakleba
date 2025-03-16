@@ -27,11 +27,11 @@ namespace Pasdakleba.Infrastructure.Data
                 new Brand {Id = 4, NameEng = "Other", NameGeo = "სხვა" }
                 );
             modelBuilder.Entity<SaleType>().HasData(
-                new SaleType { Id = 1, NameEng = "Food", NameGeo = "საკვები პროდუქტები" },
-                new SaleType { Id = 2, NameEng = "Drinks", NameGeo = "სასმელი" },
-                new SaleType { Id = 3, NameEng = "Technique", NameGeo = "ტექნიკა" },
-                new SaleType { Id = 4, NameEng = "Shoes And Clothing", NameGeo = "ტანსაცმელი და ფეხსაცმელი" },
-                new SaleType { Id = 5, NameEng = "Various", NameGeo = "სხვადასხვა" }
+                new SaleType { Id = 1, NameEng = "Food", NameGeo = "საკვები პროდუქტები", Url = "/food" },
+                new SaleType { Id = 2, NameEng = "Drinks", NameGeo = "სასმელი", Url = "/drinks" },
+                new SaleType { Id = 3, NameEng = "Technique", NameGeo = "ტექნიკა", Url = "/technique" },
+                new SaleType { Id = 4, NameEng = "Shoes And Clothing", NameGeo = "ტანსაცმელი და ფეხსაცმელი", Url = "/shoesandclothing" },
+                new SaleType { Id = 5, NameEng = "Various", NameGeo = "სხვადასხვა", Url = "/various" }
                 );            
             modelBuilder.Entity<Sale>().HasData(
                 new Sale {Id = 1, BrandId = 1, SaleTypeId = 1,

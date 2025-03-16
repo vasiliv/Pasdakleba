@@ -10,10 +10,9 @@ namespace Pasdakleba.Domain.Entities
     public class SaleType
     {
         public int Id { get; set; }        
-        [Required]
-        public required string NameGeo { get; set; }
-        [Required]
+        public required string NameGeo { get; set; }        
         public required string NameEng { get; set; }
+        public required string Url { get; set; }
 
         //Navigation properties        
         public ICollection<Sale> Sales { get; set; } = new List<Sale>();

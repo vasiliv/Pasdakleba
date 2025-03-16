@@ -16,9 +16,8 @@
             <ul class="navbar-nav">
                 @foreach (var item in navbarItems)
                 {
-                    <li class="nav-item">
-                        @* href="@item.Url" - a-ს შიგნით *@
-                        <a class="nav-link">@item.NameGeo</a>
+                    <li class="nav-item">                        
+                        <a class="nav-link" href="@item.Url">@item.NameGeo</a>
                     </li>
                 }
             </ul>
