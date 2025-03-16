@@ -1,0 +1,22 @@
+﻿@model Sale
+
+<div class="row">
+    <div class="col-12 col-md-5">
+        <img src="@Model.ImageUrl" style="border-radius:10px;" width="100%" />
+    </div>
+    <div class="col-12 col-md-7">
+        <div class="row p-2">
+            <div class="col-12">
+                <p class="card-title text-warning" style="font-size:xx-large">@Model.Brand.NameGeo</p>
+                <p class="card-text" style="font-size:large">
+                    @Model.Description
+                </p>
+            </div>
+        </div>
+        <div class="row col-12">
+            <span class="text-end p-0 pt-3 m-0">
+                <span class="float-right">ფასდაკლება აქტიურია: @Model.EndDate.ToString("dd/MM/yyyy")-მდე </span><br />
+            </span>
+        </div>
+    </div>
+</div>
