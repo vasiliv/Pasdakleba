@@ -4,8 +4,8 @@
 
 <div>
     <form method="post" style="background-color:cornflowerblue">
-        @* <div class="row p-0 mx-0 py-4">
-
+        @*  თარიღები გაუქმებულია
+            <div class="row p-0 mx-0 py-4">
             <div class="col-12 col-md-5  offset-md-1 pl-2  pr-2 pr-md-0">
                 <div class="form-group">
                     <label>Start Date</label>
@@ -49,7 +49,7 @@
                             <div class="col-12">
                                 <div class="row pb-3 pt-2">
                                     <div class="col-4">                                        
-                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(11)'>
+                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(sale.Id)'>
                                             ვრცლად
                                         </button>
                                     </div>
@@ -59,11 +59,11 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="exampleModal-@(11)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal-@(sale.Id)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl" style="border: 1px solid #aaa; border-radius:7px;">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-3 text-success" id="exampleModalLabel">Villa Details</h1>
+                                    <h1 class="modal-title fs-3 text-success" id="exampleModalLabel">ფასდაკლების დეტალები - @sale.Brand.NameGeo</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body m-0">
