@@ -19,8 +19,10 @@ namespace Pasdakleba.Domain.Entities
         public string? ImageUrl { get; set; }
         public string Description { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateOnly StartDate { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateOnly EndDate { get; set; }
 
         //Navigation properties
