@@ -16,9 +16,13 @@ public class HomeController : Controller
     }
     public IActionResult Index()
     {
+        var currentDate = DateOnly.FromDateTime(DateTime.Today);
+
         var Sales = _db.Sales
                 .Include(u => u.SaleType)
                 .Include(u => u.Brand)
+                //display only current sales
+                .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
                 .ToList();
         return View(Sales);        
     }    
