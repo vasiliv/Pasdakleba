@@ -2,7 +2,8 @@
 @inject INavbarService NavbarService
 
 @{
-    var navbarItems = await NavbarService.GetNavbarItemsAsync();
+    var navbarItems = await NavbarService.GetNavbarItemsAsync();    
+    var selectedCategory = Context.Request.Query["category"];
 }
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,7 +18,11 @@
                 @foreach (var item in navbarItems)
                 {
                     <li class="nav-item">                        
-                        <a class="nav-link" href="@item.Url">@item.NameGeo</a>
+                        @* <a class="nav-link" href="@item.Url">@item.NameGeo</a> *@
+                        <a class="nav-link @(item.Url == selectedCategory ? "active" : "")"
+                           href="@Url.Action("Index", "Home", new { category = item.Url })">
+                            @item.NameGeo
+                        </a>
                     </li>
                 }
             </ul>

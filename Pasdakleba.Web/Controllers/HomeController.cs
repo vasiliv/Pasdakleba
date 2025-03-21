@@ -14,16 +14,20 @@ public class HomeController : Controller
     {
         _db = db;
     }
-    public IActionResult Index()
+    public IActionResult Index(string category)
     {
         var currentDate = DateOnly.FromDateTime(DateTime.Today);
 
-        var Sales = _db.Sales
+        var sales = _db.Sales
                 .Include(u => u.SaleType)
                 .Include(u => u.Brand)
                 //display only current sales
-                .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
-                .ToList();
-        return View(Sales);        
+                .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)               ;
+
+        if (!string.IsNullOrEmpty(category))
+        {
+            sales = sales.Where(b => b.SaleType.Url == category);
+        }
+        return View(sales);        
     }    
 }
