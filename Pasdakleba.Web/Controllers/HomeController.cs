@@ -36,5 +36,11 @@ public class HomeController : Controller
         };
         ViewBag.brands = new SelectList(_db.Brands, "Id", "NameGeo");
         return View(indexHomeVM);        
-    }    
+    }
+    [HttpPost]
+    public IActionResult Index()
+    {
+        ViewBag.brands = new SelectList(_db.Brands, "Id", "NameGeo");
+        return View();
+    }
 }
