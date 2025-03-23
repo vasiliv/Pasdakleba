@@ -1,46 +1,67 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pasdakleba.Infrastructure.Data;
-using Pasdakleba.Web.Models;
 using Pasdakleba.Web.ViewModels;
 
 namespace Pasdakleba.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ApplicationDbContext db) : Controller
 {
-    private readonly ApplicationDbContext _db;
-    public HomeController(ApplicationDbContext db)
-    {
-        _db = db;
-    }
     public IActionResult Index(string category)
     {
         var currentDate = DateOnly.FromDateTime(DateTime.Today);
 
-        var sales = _db.Sales
-                .Include(u => u.SaleType)
-                .Include(u => u.Brand)
-                //display only current sales
-                .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)               ;
+        var sales = db.Sales
+            .Include(u => u.SaleType)
+            .Include(u => u.Brand)
+            //.Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
+            .ToList();
 
         if (!string.IsNullOrEmpty(category))
         {
-            sales = sales.Where(b => b.SaleType.Url == category);
+            sales = sales.Where(b => b.SaleType.Url == category).ToList();
         }
 
         IndexHomeVM indexHomeVM = new()
         {
             Sales = sales,
+            Brands = [.. db.Brands
+                        .Select(b => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                        {
+                            Value = b.Id.ToString(),
+                            Text = b.NameGeo
+                        })],
+            SelectedBrandId = null // No brand selected initially
         };
-        ViewBag.brands = new SelectList(_db.Brands, "Id", "NameGeo");
-        return View(indexHomeVM);        
+
+        return View(indexHomeVM);
     }
+
     [HttpPost]
-    public IActionResult Index()
+    public IActionResult Index(IndexHomeVM model)
     {
-        ViewBag.brands = new SelectList(_db.Brands, "Id", "NameGeo");
-        return View();
+        var currentDate = DateOnly.FromDateTime(DateTime.Today);
+
+        var sales = db.Sales
+            .Include(u => u.SaleType)
+            .Include(u => u.Brand)
+            //.Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
+            .ToList();
+
+        if (model.SelectedBrandId.HasValue)
+        {
+            sales = sales.Where(s => s.BrandId == model.SelectedBrandId.Value).ToList();
+        }
+
+        model.Sales = sales;
+        model.Brands = [.. db.Brands
+                        .Select(b => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                        {
+                            Value = b.Id.ToString(),
+                            Text = b.NameGeo,
+                            Selected = (model.SelectedBrandId.HasValue && b.Id == model.SelectedBrandId.Value)
+                        })];
+
+        return View(model);
     }
 }
