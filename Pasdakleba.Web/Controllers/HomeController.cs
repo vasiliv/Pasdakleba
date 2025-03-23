@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pasdakleba.Infrastructure.Data;
 using Pasdakleba.Web.Models;
@@ -28,6 +29,12 @@ public class HomeController : Controller
         {
             sales = sales.Where(b => b.SaleType.Url == category);
         }
-        return View(sales);        
+
+        IndexHomeVM indexHomeVM = new()
+        {
+            Sales = sales,
+        };
+        ViewBag.brands = new SelectList(_db.Brands, "Id", "NameGeo");
+        return View(indexHomeVM);        
     }    
 }
