@@ -64,4 +64,8 @@ public class HomeController(ApplicationDbContext db) : Controller
 
         return View(model);
     }
+    public IActionResult Contact()
+    {
+        return View("Contact"); // Looks for Views/Shared/contact.cshtml
+    }
 }
