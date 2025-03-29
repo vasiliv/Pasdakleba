@@ -14,7 +14,8 @@ public class HomeController(ApplicationDbContext db) : Controller
         var sales = db.Sales
             .Include(u => u.SaleType)
             .Include(u => u.Brand)
-            //.Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
+            .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
+            .OrderByDescending(s => s.StartDate) // Show newer sales first
             .ToList();
 
         if (!string.IsNullOrEmpty(category))
