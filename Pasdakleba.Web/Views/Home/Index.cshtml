@@ -20,7 +20,7 @@
         <div class="row px-lg-5 m-lg-4 m-sm-0 px-sm-0" style="--bs-gutter-x:0">
             @foreach (var sale in Model.Sales)
             {
-                <div class="p-4 col-md-12 col-lg-6">
+                <div class="p-4 col-md-12 col-lg-4">
                     <div class="row" style="border-radius:5px; border: 1px solid #aaa">
                         <div class="col-4 p-2">
                             <img class="d-block w-100" style="border-radius:5px;" src="@sale.ImageUrl">
@@ -32,9 +32,9 @@
                             <p class="card-text">
                                 სფერო: @sale.SaleType.NameGeo
                             </p>
-                            <p class="card-text">
+                            @* <p class="card-text">
                                 @sale.Description
-                            </p>
+                            </p> *@
                         </div>
                         <div class="col-12">
                             <div class="row pb-3 pt-2">
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col-9">
                                     <p class="card-text">
-                                        ფასდაკლება აქტიურია: @sale.EndDate.ToString("dd/MM/yyyy")-მდე
+                                        აქტიურია: @sale.EndDate.ToString("dd/MM/yyyy")-მდე
                                     </p>
                                 </div>
                             </div>
