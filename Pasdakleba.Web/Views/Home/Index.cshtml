@@ -10,7 +10,7 @@
                     <option value="">აირჩიეთ ბრენდი</option>
                 </select>
             </div>
-            <div class="form-group col-6">                
+            <div class="form-group col-6">
                 <button type="submit" class="btn btn-primary">
                     <i class="bi bi-search"></i> გაფილტრე
                 </button>
@@ -21,34 +21,25 @@
             @foreach (var sale in Model.Sales)
             {
                 <div class="col-md-12 col-lg-3">
-                    <div class="row" style="border: 1px solid #aaa">
-                        <div class="col-4 p-2">
-                            <img class="d-block w-100" style="border-radius:5px;" src="@sale.ImageUrl">
+                    <div class="row" style="border: 1px solid #aaa">                        
+                        <img class="d-block w-100" style="border-radius:5px;" src="@sale.ImageUrl">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-title text-secondary" style="font-size:xx-large">@sale.Brand.NameGeo</p>
                         </div>
-                        <div class="col-8">
-                            <div class="d-flex justify-content-between">
-                                <p class="card-title text-warning" style="font-size:xx-large">@sale.Brand.NameGeo</p>
-                            </div>
+                        <div class="d-flex justify-content-between">
                             <p class="card-text">
                                 სფერო: @sale.SaleType.NameGeo
                             </p>
-                            @* <p class="card-text">
-                                @sale.Description
-                            </p> *@
                         </div>
-                        <div class="col-12">
-                            <div class="row pb-3 pt-2">
-                                <div class="col-3">
-                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(sale.Id)'>
-                                        ვრცლად
-                                    </button>
-                                </div>
-                                <div class="col-9">
-                                    <p class="card-text">
-                                        აქტიურია: @sale.EndDate.ToString("dd/MM/yyyy")-მდე
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">
+                                აქტიურია: @sale.EndDate.ToString("dd/MM/yyyy")-მდე
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target='#exampleModal-@(sale.Id)'>
+                                ვრცლად
+                            </button>
                         </div>
                     </div>
                 </div>
