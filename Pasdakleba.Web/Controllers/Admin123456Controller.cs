@@ -50,12 +50,12 @@ namespace Pasdakleba.Web.Controllers
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(obj.Sale.Image.FileName);
                     //images folder in wwwroot
-                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images\");
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images/");
 
                     using var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create);
                     obj.Sale.Image.CopyTo(fileStream);
 
-                    obj.Sale.ImageUrl = @"\images\" + fileName;
+                    obj.Sale.ImageUrl = @"/images/" + fileName;
                 }
                 else
                 {
@@ -99,7 +99,7 @@ namespace Pasdakleba.Web.Controllers
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(saleVM.Sale.Image.FileName);
                     //images folder in wwwroot
-                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images\");
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images/");
 
                     if (!string.IsNullOrEmpty(saleVM.Sale.ImageUrl))
                     {
@@ -113,7 +113,7 @@ namespace Pasdakleba.Web.Controllers
                     using var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create);
                     saleVM.Sale.Image.CopyTo(fileStream);
 
-                    saleVM.Sale.ImageUrl = @"\images\" + fileName;
+                    saleVM.Sale.ImageUrl = @"/images/" + fileName;
                 }                
                 _db.Sales.Update(saleVM.Sale);
                 _db.SaveChanges();
