@@ -17,8 +17,7 @@
             <ul class="navbar-nav">
                 @foreach (var item in navbarItems)
                 {
-                    <li class="nav-item">                        
-                        @* <a class="nav-link" href="@item.Url">@item.NameGeo</a> *@
+                    <li class="nav-item">                       
                         <a class="nav-link @(item.Url == selectedCategory ? "active" : "")"
                            href="@Url.Action("Index", "Home", new { category = item.Url })">
                             @item.NameGeo
