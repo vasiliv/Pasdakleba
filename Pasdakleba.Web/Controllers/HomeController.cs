@@ -16,7 +16,7 @@ public class HomeController(ApplicationDbContext db) : Controller
             .Include(u => u.Brand)
             .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
             .OrderBy(u => u.Priority)
-            .OrderByDescending(s => s.StartDate) // Show newer sales first
+            .OrderByDescending(s => s.CreateDate) // Show newer sales first
             .ToList();
 
         if (!string.IsNullOrEmpty(category))
@@ -49,7 +49,7 @@ public class HomeController(ApplicationDbContext db) : Controller
             .Include(u => u.Brand)
             .Where(s => s.StartDate <= currentDate && s.EndDate >= currentDate)
             .OrderBy(u => u.Priority)
-            .OrderByDescending(s => s.StartDate) // Show newer sales first
+            .OrderBy(s => s.StartDate) // Show newer sales first
             .ToList();
 
         if (model.SelectedBrandId.HasValue)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pasdakleba.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Pasdakleba.Infrastructure.Data;
 namespace Pasdakleba.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250418120344_SuptaSakhli")]
+    partial class SuptaSakhli
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,9 +110,6 @@ namespace Pasdakleba.Infrastructure.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -136,6 +136,19 @@ namespace Pasdakleba.Infrastructure.Migrations
                     b.HasIndex("SaleTypeId");
 
                     b.ToTable("Sales");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BrandId = 1,
+                            Description = "🥥 ქოქოსი 1ც. - 2.29₾ ნაცვლად 3.50₾-ისა\r\n🥑 ავოკადო 1ც. - 2.69₾ ნაცვლად 3.95₾-ისა\r\n🥭 მანგო 1ც. - 2.99₾ ნაცვლად 4.75₾-ისა\r\n🍊 პომელო 1ც. - 5.49₾ ნაცვლად 8.50₾-ისა",
+                            EndDate = new DateOnly(2024, 12, 31),
+                            ImageUrl = "www.pasdakleba.ge/1.jpg",
+                            Priority = 1,
+                            SaleTypeId = 1,
+                            StartDate = new DateOnly(2024, 3, 1)
+                        });
                 });
 
             modelBuilder.Entity("Pasdakleba.Domain.Entities.SaleType", b =>

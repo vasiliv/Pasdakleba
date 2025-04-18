@@ -24,6 +24,8 @@ namespace Pasdakleba.Domain.Entities
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateOnly EndDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.Now;
+
 
         //Navigation properties
         public int BrandId { get; set; }

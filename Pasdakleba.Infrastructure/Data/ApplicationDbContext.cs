@@ -26,8 +26,9 @@ namespace Pasdakleba.Infrastructure.Data
                 new Brand { Id = 3, NameEng = "Magniti", NameGeo = "მაგნიტი" },
                 new Brand { Id = 4, NameEng = "Nikora", NameGeo = "ნიკორა"},               
                 new Brand { Id = 5, NameEng = "Spar", NameGeo = "სპარი" },
-                new Brand { Id = 6, NameEng = "Fresco", NameGeo = "ფრესკო" },
-                new Brand { Id = 7, NameEng = "Other", NameGeo = "სხვა" }
+                new Brand { Id = 6, NameEng = "SuptaSakhli", NameGeo = "სუფთა სახლი" },
+                new Brand { Id = 7, NameEng = "Fresco", NameGeo = "ფრესკო" },
+                new Brand { Id = 8, NameEng = "Other", NameGeo = "სხვა" }
                 );
             modelBuilder.Entity<SaleType>().HasData(
                 new SaleType { Id = 1, NameEng = "Food", NameGeo = "საკვები პროდუქტები", Url = "/food" },
@@ -39,11 +40,11 @@ namespace Pasdakleba.Infrastructure.Data
                 new SaleType { Id = 7, NameEng = "Various", NameGeo = "სხვადასხვა", Url = "/various" }
                 );            
             modelBuilder.Entity<Sale>().HasData(
-                new Sale {Id = 1, BrandId = 1, SaleTypeId = 1,
-                            Priority = 1, ImageUrl = "www.pasdakleba.ge/1.jpg",
-                            Description = "\U0001f965 ქოქოსი 1ც. - 2.29₾ ნაცვლად 3.50₾-ისა\r\n\U0001f951 ავოკადო 1ც. - 2.69₾ ნაცვლად 3.95₾-ისა\r\n\U0001f96d მანგო 1ც. - 2.99₾ ნაცვლად 4.75₾-ისა\r\n🍊 პომელო 1ც. - 5.49₾ ნაცვლად 8.50₾-ისა",
-                            StartDate = new DateOnly(2024, 3, 1), EndDate = new DateOnly(2024, 12, 31)
-                        }
+                //new Sale {Id = 1, BrandId = 1, SaleTypeId = 1,
+                //            Priority = 1, ImageUrl = "www.pasdakleba.ge/1.jpg",
+                //            Description = "\U0001f965 ქოქოსი 1ც. - 2.29₾ ნაცვლად 3.50₾-ისა\r\n\U0001f951 ავოკადო 1ც. - 2.69₾ ნაცვლად 3.95₾-ისა\r\n\U0001f96d მანგო 1ც. - 2.99₾ ნაცვლად 4.75₾-ისა\r\n🍊 პომელო 1ც. - 5.49₾ ნაცვლად 8.50₾-ისა",
+                //            StartDate = new DateOnly(2024, 3, 1), EndDate = new DateOnly(2024, 12, 31)
+                //        }
                 );
         }
     }
