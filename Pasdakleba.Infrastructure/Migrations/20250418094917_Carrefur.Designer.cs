@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pasdakleba.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Pasdakleba.Infrastructure.Data;
 namespace Pasdakleba.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250418094917_Carrefur")]
+    partial class Carrefur
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +46,7 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands", (string)null);
+                    b.ToTable("Brands");
 
                     b.HasData(
                         new
@@ -126,7 +129,7 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasIndex("SaleTypeId");
 
-                    b.ToTable("Sales", (string)null);
+                    b.ToTable("Sales");
 
                     b.HasData(
                         new
@@ -164,7 +167,7 @@ namespace Pasdakleba.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SaleTypes", (string)null);
+                    b.ToTable("SaleTypes");
 
                     b.HasData(
                         new
