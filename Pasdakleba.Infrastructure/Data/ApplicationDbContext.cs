@@ -22,13 +22,16 @@ namespace Pasdakleba.Infrastructure.Data
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Brand>().HasData(
                 new Brand { Id = 1, NameEng = "2Nabiji", NameGeo = "2 ნაბიჯი" },
-                new Brand { Id = 2, NameEng = "Carrefour", NameGeo = "კარფური" },
-                new Brand { Id = 3, NameEng = "Magniti", NameGeo = "მაგნიტი" },
-                new Brand { Id = 4, NameEng = "Nikora", NameGeo = "ნიკორა"},               
-                new Brand { Id = 5, NameEng = "Spar", NameGeo = "სპარი" },
-                new Brand { Id = 6, NameEng = "SuptaSakhli", NameGeo = "სუფთა სახლი" },
-                new Brand { Id = 7, NameEng = "Fresco", NameGeo = "ფრესკო" },
-                new Brand { Id = 8, NameEng = "Other", NameGeo = "სხვა" }
+                new Brand { Id = 2, NameEng = "Aversi", NameGeo = "ავერსი" },
+                new Brand { Id = 3, NameEng = "Carrefour", NameGeo = "კარფური" },
+                new Brand { Id = 4, NameEng = "Libre", NameGeo = "ლიბრე" },
+                new Brand { Id = 5, NameEng = "Magniti", NameGeo = "მაგნიტი" },
+                new Brand { Id = 6, NameEng = "Nikora", NameGeo = "ნიკორა"},               
+                new Brand { Id = 7, NameEng = "Spar", NameGeo = "სპარი" },
+                new Brand { Id = 8, NameEng = "SuptaSakhli", NameGeo = "სუფთა სახლი" },
+                new Brand { Id = 9, NameEng = "Fresco", NameGeo = "ფრესკო" },
+                new Brand { Id = 10, NameEng = "Other", NameGeo = "სხვა" },
+                new Brand { Id = 11, NameEng = "Gorgia", NameGeo = "გორგია" }
                 );
             modelBuilder.Entity<SaleType>().HasData(
                 new SaleType { Id = 1, NameEng = "Food", NameGeo = "საკვები პროდუქტები", Url = "/food" },

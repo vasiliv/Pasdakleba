@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pasdakleba.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Pasdakleba.Infrastructure.Data;
 namespace Pasdakleba.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250428111822_Aversi")]
+    partial class Aversi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,50 +70,38 @@ namespace Pasdakleba.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            NameEng = "Libre",
-                            NameGeo = "ლიბრე"
-                        },
-                        new
-                        {
-                            Id = 5,
                             NameEng = "Magniti",
                             NameGeo = "მაგნიტი"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 5,
                             NameEng = "Nikora",
                             NameGeo = "ნიკორა"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 6,
                             NameEng = "Spar",
                             NameGeo = "სპარი"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 7,
                             NameEng = "SuptaSakhli",
                             NameGeo = "სუფთა სახლი"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 8,
                             NameEng = "Fresco",
                             NameGeo = "ფრესკო"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 9,
                             NameEng = "Other",
                             NameGeo = "სხვა"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            NameEng = "Gorgia",
-                            NameGeo = "გორგია"
                         });
                 });
 

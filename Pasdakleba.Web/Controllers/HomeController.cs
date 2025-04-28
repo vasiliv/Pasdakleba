@@ -28,6 +28,7 @@ public class HomeController(ApplicationDbContext db) : Controller
         {
             Sales = sales,
             Brands = [.. db.Brands
+                        .OrderBy(b => b.NameGeo)
                         .Select(b => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                         {
                             Value = b.Id.ToString(),
@@ -59,6 +60,7 @@ public class HomeController(ApplicationDbContext db) : Controller
 
         model.Sales = sales;
         model.Brands = [.. db.Brands
+                        .OrderBy(b => b.NameGeo)
                         .Select(b => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                         {
                             Value = b.Id.ToString(),
