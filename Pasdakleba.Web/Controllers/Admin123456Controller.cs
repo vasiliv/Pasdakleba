@@ -28,7 +28,7 @@ namespace Pasdakleba.Web.Controllers
         {
             SaleVM saleVm = new()
             {
-                BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+                BrandList = _db.Brands.OrderBy(u => u.NameGeo).ToList().Select(u => new SelectListItem
                 {
                     Text = u.NameGeo,
                     Value = u.Id.ToString()
@@ -72,7 +72,7 @@ namespace Pasdakleba.Web.Controllers
         {
             SaleVM saleVm = new()
             {
-                BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+                BrandList = _db.Brands.OrderBy(u => u.NameGeo).ToList().Select(u => new SelectListItem
                 {
                     Text = u.NameGeo,
                     Value = u.Id.ToString()
@@ -120,7 +120,7 @@ namespace Pasdakleba.Web.Controllers
                 TempData["success"] = "The sale has been updated successfully.";
                 return RedirectToAction("Index");
             }
-            saleVM.BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+            saleVM.BrandList = _db.Brands.OrderBy(u => u.NameGeo).ToList().Select(u => new SelectListItem
             {
                 Text = u.NameGeo,
                 Value = u.Id.ToString()
@@ -136,7 +136,7 @@ namespace Pasdakleba.Web.Controllers
         {            
             SaleVM saleVm = new()
             {
-                BrandList = _db.Brands.ToList().Select(u => new SelectListItem
+                BrandList = _db.Brands.OrderBy(u => u.NameGeo).ToList().Select(u => new SelectListItem
                 {
                     Text = u.NameGeo,
                     Value = u.Id.ToString()
