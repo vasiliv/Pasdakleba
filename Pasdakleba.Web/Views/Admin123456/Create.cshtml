@@ -14,7 +14,7 @@
             <div class="p-3">
                 <div class="form-floating py-1 col-12">
                     @* <input asp-for="Sale.BrandId" class="form-control border shadow" /> *@
-                    <select asp-for="@Model.Sale.BrandId" asp-items="@Model.BrandList" class="form-select border shadow">                        
+                    <select asp-for="@Model.Sale.BrandId" asp-items="@Model.BrandList" class="form-select border shadow">
                         <option disabled selected>--Select Brand--</option>
                     </select>
                     @* <label asp-for="Sale.BrandId" class="ms-2"></label> *@
@@ -32,7 +32,7 @@
                     <input asp-for="Sale.Priority" class="form-control border shadow" />
                     <label asp-for="Sale.Priority" class="ms-2"></label>
                     <span asp-validation-for="Sale.Priority" class="text-danger"></span>
-                </div>                
+                </div>
                 <div class="form-floating py-1 col-12">
                     <input asp-for="Sale.ImageUrl" hidden class="form-control border shadow" />
                     <input asp-for="Sale.Image" class="form-control border shadow" />
@@ -43,7 +43,7 @@
                     <textarea asp-for="Sale.Description" rows="6" class="form-control border shadow" style="height: 150px;"></textarea>
                     <label asp-for="Sale.Description" class="ms-2"></label>
                     <span asp-validation-for="Sale.Description" class="text-danger"></span>
-                </div>
+                </div>                
                 <div class="form-floating py-1 col-12">
                     <input asp-for="Sale.StartDate" type="date" class="form-control border shadow" />
                     <label asp-for="Sale.StartDate" class="ms-2"></label>
@@ -72,8 +72,16 @@
 </div>
 
 @* client side validation *@
-@section Scripts {
+@* @section Scripts {    
     @{
         <partial name="_ValidationScriptsPartial" />
     }
- }
+ } *@
+@section Scripts {
+    <script src="https://cdn.tiny.cloud/1/8v7ap9no879e3vf48t9bipzno7dfbo8dgefvm9kgcttuz3nu/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+          tinymce.init({
+          selector: 'textarea'
+        });
+    </script>
+}

@@ -17,6 +17,7 @@ namespace Pasdakleba.Domain.Entities
         [NotMapped]
         public IFormFile? Image { get; set; }
         public string? ImageUrl { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]

@@ -9,7 +9,8 @@
             <div class="col-12">
                 <p class="card-title text-warning pb-2" style="font-size:xx-large">@Model.Brand.NameGeo</p>
                 <p class="card-text" style="font-size:large">
-                    @Model.Description
+                    @* @Model.Description *@
+                    @Html.Raw(Model.Description)
                 </p>
             </div>
         </div>

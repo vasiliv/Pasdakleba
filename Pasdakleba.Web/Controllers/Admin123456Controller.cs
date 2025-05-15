@@ -10,11 +10,11 @@ namespace Pasdakleba.Web.Controllers
     public class Admin123456Controller : Controller
     {
         private readonly ApplicationDbContext _db;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        public Admin123456Controller(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment    )
+        private readonly IWebHostEnvironment _webHostEnvironment;        
+        public Admin123456Controller(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
             _db = db;
-            _webHostEnvironment = webHostEnvironment;
+            _webHostEnvironment = webHostEnvironment;            
         }
         public IActionResult Index()
         {
