@@ -40,10 +40,20 @@
                     <span asp-validation-for="Sale.ImageUrl" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-1 col-12">
-                    <textarea asp-for="Sale.Description" rows="6" class="form-control border shadow" style="height: 150px;"></textarea>
+                    <textarea asp-for="Sale.Description" id="htmlInput" rows="6" class="form-control border shadow" style="height: 150px;"></textarea>
                     <label asp-for="Sale.Description" class="ms-2"></label>
                     <span asp-validation-for="Sale.Description" class="text-danger"></span>
-                </div>                
+                </div>
+                @* script for preserving html in description textarea *@
+                <script>
+                    document.getElementById("htmlInput").addEventListener("paste", function (e) {
+                        e.preventDefault();
+                        const clipboardData = e.clipboardData || window.clipboardData;
+                        const pastedData = clipboardData.getData("text/html") || clipboardData.getData("text/plain");
+                        this.value += pastedData;
+                    });
+                </script>
+
                 <div class="form-floating py-1 col-12">
                     <input asp-for="Sale.StartDate" type="date" class="form-control border shadow" />
                     <label asp-for="Sale.StartDate" class="ms-2"></label>
@@ -72,8 +82,9 @@
 </div>
 
 @* client side validation *@
-@section Scripts {    
+@section Scripts {
     @{
-                <partial name="_ValidationScriptsPartial" />
+        <partial name="_ValidationScriptsPartial" />
+
     }
  }

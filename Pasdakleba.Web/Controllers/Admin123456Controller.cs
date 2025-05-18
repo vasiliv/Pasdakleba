@@ -42,7 +42,7 @@ namespace Pasdakleba.Web.Controllers
             return View(saleVm);
         }
         [HttpPost]
-        public IActionResult Create(SaleVM obj)
+        public IActionResult Create([FromForm] SaleVM obj)
         {
             if (ModelState.IsValid)
             {
