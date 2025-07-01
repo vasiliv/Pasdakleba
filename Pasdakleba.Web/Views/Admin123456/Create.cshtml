@@ -55,7 +55,8 @@
                 </script>
 
                 <div class="form-floating py-1 col-12">
-                    <input asp-for="Sale.StartDate" type="date" class="form-control border shadow" />
+                    @* Today's date at StartDate by default *@
+                    <input asp-for="Sale.StartDate" type="date" value="@DateTime.Today.ToString("yyyy-MM-dd")" class="form-control border shadow" />
                     <label asp-for="Sale.StartDate" class="ms-2"></label>
                     <span asp-validation-for="Sale.StartDate" class="text-danger"></span>
                 </div>

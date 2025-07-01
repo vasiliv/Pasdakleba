@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -19,15 +20,15 @@ namespace Pasdakleba.Domain.Entities
         public string? ImageUrl { get; set; }
         [ValidateNever]
         public string Description { get; set; }
-        [Required]
+        [Required]        
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateOnly StartDate { get; set; }
+        public DateOnly StartDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateOnly EndDate { get; set; }
+
         public DateTime CreateDate { get; set; } = DateTime.Now;
-
-
+        
         //Navigation properties
         public int BrandId { get; set; }
         //Modelstate.IsValid will not work without it
@@ -38,5 +39,6 @@ namespace Pasdakleba.Domain.Entities
         //Modelstate.IsValid will not work without it
         [ValidateNever]
         public SaleType SaleType { get; set; }
+        
     }
 }
