@@ -20,7 +20,14 @@ namespace Pasdakleba.Application.Services
         }
         public async Task<List<SaleType>> GetNavbarItemsAsync()
         {
-            return await _db.SaleTypes.ToListAsync();
+            //return await _db.SaleTypes.ToListAsync();
+            //Order category items by create date
+            return await _db.SaleTypes
+                .Include(st => st.Sales)
+                .OrderByDescending(st => st.Sales
+                .OrderByDescending(s => s.CreateDate)                
+                .FirstOrDefault())
+                .ToListAsync();
         }
     }
 }
