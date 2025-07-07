@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pasdakleba.Infrastructure.Data;
 using Pasdakleba.Web.ViewModels;
@@ -35,7 +36,7 @@ public class HomeController(ApplicationDbContext db) : Controller
                             Text = b.NameGeo
                         })],
             SelectedBrandId = null // No brand selected initially
-        };
+        };        
 
         return View(indexHomeVM);
     }
@@ -67,7 +68,6 @@ public class HomeController(ApplicationDbContext db) : Controller
                             Text = b.NameGeo,
                             Selected = (model.SelectedBrandId.HasValue && b.Id == model.SelectedBrandId.Value)
                         })];
-
         return View(model);
     }
     public IActionResult Contact()
