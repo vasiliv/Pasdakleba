@@ -7,13 +7,13 @@
 
 <div class="container position-relative">
     <div class="row">
-        <div class="col-1 d-none d-lg-block">
+        <div class="col-1 d-none d-lg-block z-3">
             @if (prevId != null)
             {
                 <a data-bs-toggle="modal"
                    data-bs-dismiss="modal"
                    data-bs-target="#exampleModal-@prevId"
-                   class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y ms-3 z-3">
+                   class="btn btn-secondary position-absolute top-50 start-0 translate-middle-y ms-3 z-3">
                     &#8592; წინა
                 </a>
             }
@@ -23,24 +23,26 @@
         </div>        
         <div class="col-12 col-lg-3 order-3 order-lg-2">
             <p class="card-title text-warning pb-2" style="font-size:xx-large">@Model.Brand.NameGeo</p>
-            <p class="card-text" style="font-size:large">
-                @* @Model.Description *@
+            <p class="card-text" style="font-size:large">               
                 @Html.Raw(Model.Description)
             </p>
             <span class="text-end p-0 pt-3 m-0">
                 <span class="float-right">ფასდაკლება აქტიურია: @Model.EndDate.ToString("dd/MM/yyyy")-მდე </span><br />
             </span>
         </div>
-        <div class="col-1 d-none d-lg-block">
+        <div class="col-1 d-none d-lg-block z-3">
             @if (nextId != null)
             {
                 <a data-bs-toggle="modal"
                    data-bs-dismiss="modal"
                    data-bs-target="#exampleModal-@nextId"
-                   class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-3 z-3">
+                   class="btn btn-secondary position-absolute top-50 end-0 translate-middle-y pe-3 z-3">
                     შემდეგი &#8594;
                 </a>
             }
         </div>
     </div>
-</div>
+</div> 
+
+
+
