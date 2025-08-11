@@ -56,7 +56,7 @@
                         <label asp-for="Sale.EndDate" class="ms-2"></label>
                         <span asp-validation-for="Sale.EndDate" class="text-danger"></span>
                     </div>
-                    <div class="row pt-2">
+                    @* <div class="row pt-2">
                         <div class="col-6 col-md-3">
                             <button type="submit" class="btn btn-danger w-100">
                                 წაშლა
@@ -67,12 +67,17 @@
                                 გამოსვლა
                             </a>
                         </div>
-                    </div>
+                    </div> *@
                 </div>
             </div>
             <div class="col-2">
-                <img src="@Model.Sale.ImageUrl" width="100%"
-                     style="border-radius:5px; border:1px solid #bbb9b9" />
+                <img src="@Model.Sale.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+                <button type="submit" class="btn btn-danger w-100">
+                    წაშლა
+                </button>
+                <a asp-controller="Admin123456" asp-action="Index" class="btn btn-secondary w-100">
+                    გამოსვლა
+                </a>
             </div>
         </form>
     </div>
